@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./data-service/data/emp_mgmt_db
+    username: admin
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
