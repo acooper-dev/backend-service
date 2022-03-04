@@ -1,0 +1,47 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: CUSTOMER-SERVICE
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/customers/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: CUSTOMER-SERVICE
+#                fallbackuri: forward:/customerServiceFallBack
+
+        - id: ADDRESS-SERVICE
+          uri: lb://ADDRESS-SERVICE
+          predicates:
+            - Path=/address/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: ADDRESS-SERVICE
+#                fallbackuri: forward:/addressServiceFallBack
+
+#resilience4j.circuitbreaker:
+#  instances:
+#    CUSTOMER-SERVICE:
+#      registerHealthIndicator: true
+#      waitDurationInOpenState: 10s
+#    ADDRESS-SERVICE:
+#      registerHealthIndicator: true
+#      waitDurationInOpenState: 10s
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    instance:
+      hostname: localhost
+
