@@ -26,5 +26,5 @@ public class Skill {
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
-    private User User;
+    private User user;
 }

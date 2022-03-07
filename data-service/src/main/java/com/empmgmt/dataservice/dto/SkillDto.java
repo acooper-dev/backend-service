@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDto {
-    private long taskId;
+public class SkillDto {
+    private long skillId;
     private String description;
-    private String status;
 }

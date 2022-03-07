@@ -31,5 +31,5 @@ public class Roles {
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-    private Set<User> User;
+    private Set<User> user;
 }
