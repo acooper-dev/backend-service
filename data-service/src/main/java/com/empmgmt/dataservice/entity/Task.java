@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -29,4 +30,17 @@ public class Task {
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task task = (Task) o;
+        return Objects.equals(this.getTaskId(), task.getTaskId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getTaskId());
+    }
 }
