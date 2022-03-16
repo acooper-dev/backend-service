@@ -1,13 +1,12 @@
 package com.empmgmt.dataservice.utility;
 
 import com.empmgmt.dataservice.entity.User;
-import com.empmgmt.dataservice.service.TaskService;
-import com.empmgmt.dataservice.service.UserService;
+import com.empmgmt.dataservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
+import java.time.LocalDateTime;
 
 //select * from users;
 //select * from roles;
@@ -19,29 +18,17 @@ import java.util.Optional;
 public class  InitData implements CommandLineRunner {
 
     @Autowired
-    UserService userService;
-
-    @Autowired
-    TaskService taskService;
+    UserRepository userRepository;
 
     @Override
     public void run(String... args) {
 
-        userService.createUser("admin","admin-user","admin user","password");
+        User user  = new User(0, "Adam Cooper", "acooper","password", LocalDateTime.now());
+        User user1  = new User(0, "Adam Cooper1", "acooper1","password", LocalDateTime.now());
+        User user2  = new User(0, "Adam Cooper2", "acooper2","password", LocalDateTime.now());
 
-        Optional<User> user = userService.createUser("employee","acooper","Adam Cooper","password");
-        Optional<User> user2 = userService.createUser("employee","jbrady","John Brady","password");
+        userRepository.save(user);
 
-//      List<TaskDto> taskDtoList = new ArrayList<>();
-//      taskDtoList.add(new TaskDto(0,"Learn Java8 Streams","50"));
-//      taskDtoList.add(new TaskDto(0,"Learn SpringBoot auto-configuration","80"));
-//      taskDtoList.add(new TaskDto(0,"Learn Spring Security","75"));
-//
-//      List<TaskDto> taskDtoList2 = new ArrayList<>();
-//      taskDtoList2.add(new TaskDto(0,"Learn Postman","60"));
-//      taskDtoList2.add(new TaskDto(0,"Learn Docker","85"));
-//
-//      taskService.addTask(user.map(User::getUserId).orElse(0L),taskDtoList);
-//      8585taskService.addTask(user2.map(User::getUserId).orElse(0L),taskDtoList2);
+        //userRepository.deleteById(2L);
     }
 }

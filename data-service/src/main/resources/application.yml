@@ -6,11 +6,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        SQL: debug
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
 #        type:
 #          descriptor:
 #            sql: trace
