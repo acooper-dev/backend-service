@@ -28,7 +28,7 @@ public class  InitData implements CommandLineRunner {
         User user2  = new User(0, "Adam Cooper2", "acooper2","password", LocalDateTime.now());
 
         userRepository.save(user);
-
-        //userRepository.deleteById(2L);
+        userRepository.save(user1);
+        userRepository.save(user2);
     }
 }

@@ -32,5 +32,4 @@ public class User {
 
     @Column(name = "create_at", columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt;
-
 }
