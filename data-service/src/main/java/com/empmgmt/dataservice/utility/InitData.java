@@ -30,5 +30,6 @@ public class  InitData implements CommandLineRunner {
         userRepository.save(user);
         userRepository.save(user1);
         userRepository.save(user2);
+
     }
 }
